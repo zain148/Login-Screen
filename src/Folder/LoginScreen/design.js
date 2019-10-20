@@ -13,6 +13,22 @@ import {
 } from "react-native";
 
 class Design extends Component {
+  static navigationOptions = {
+    header: null
+  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      userId: "",
+      userPass: ""
+    };
+  }
+
+  calculate = () => {
+    if (this.state.userId === "zain" && this.state.userPass === "123") {
+      this.props.navigation.navigate("ScreenThree");
+    }
+  };
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
@@ -36,11 +52,18 @@ class Design extends Component {
 
           <View style={styles.insideBlock2ForInput}>
             {/*TextInputr*/}
-            <TextInput placeholder="username" style={styles.Input} />
+            <TextInput
+              placeholder="username"
+              style={styles.Input}
+              onChangeText={event => this.setState({ userId: event })}
+            />
             <TextInput
               placeholder="Password"
               style={styles.Input}
               secureTextEntry
+              onChangeText={event => {
+                this.setState({ userPass: event });
+              }}
             />
           </View>
           <View style={styles.InsideBlock2Forcheckbox}>
@@ -49,10 +72,10 @@ class Design extends Component {
               disabled={false}
               onValueChange={() => alert("You select true")}
             />
-            <Text> Remeber me</Text>
+            <Text> Remember me</Text>
           </View>
           <View style={styles.InsideBlock2ForButton}>
-            <TouchableOpacity style={styles.ForButton}>
+            <TouchableOpacity style={styles.ForButton} onPress={this.calculate}>
               <Text
                 style={{
                   color: "blue",
@@ -68,7 +91,7 @@ class Design extends Component {
           </View>
           <Text
             style={{ marginTop: 10, textAlign: "center" }}
-            onPress={() => alert("haah")}
+            onPress={() => alert("Jaa salya")}
           >
             Forgot Password ?
           </Text>

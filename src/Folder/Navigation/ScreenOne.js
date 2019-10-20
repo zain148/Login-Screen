@@ -3,7 +3,10 @@ import { View, Text, Button } from "react-native";
 
 class ScreenOne extends Component {
   static navigationOptions = {
-    title: "Screen 1"
+    title: "Screen 1",
+    headerStyle: {
+      textAlign: "center"
+    }
   };
   render() {
     return (
