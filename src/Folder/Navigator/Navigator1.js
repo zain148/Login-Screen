@@ -1,20 +1,26 @@
 import React, { Component } from "react";
 import { View, Text, Button } from "react-native";
-
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 class Navigator1 extends Component {
-  static navigationOptions = {
-    title: "Screen1",
-    headerStyle: {
-      backgroundColor: "gray",
-      height: 50
-    },
-    headerTitleStyle: {
-      fontSize: 20,
-      color: "white",
-      textAlign: "center",
-      alignSelf: "center"
-    },
-    headerBackTitle: "Humma"
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "Screen1",
+      headerStyle: {
+        backgroundColor: "gray",
+        height: 50
+      },
+      headerTitleStyle: {
+        color: "white"
+      },
+      headerLeft: (
+        <MaterialCommunityIcons
+          name="forward"
+          size={32}
+          color="white"
+          onPress={() => navigation.navigate("Screen2")}
+        />
+      )
+    };
   };
   render() {
     return (
