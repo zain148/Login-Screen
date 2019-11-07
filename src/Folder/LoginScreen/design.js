@@ -9,26 +9,45 @@ import {
   TouchableOpacity,
   CheckBox,
   Image,
+  AsyncStorage,
+  Alert,
   KeyboardAvoidingView
 } from "react-native";
 
+import LogoImage from "../../Images";
 class Design extends Component {
   static navigationOptions = {
     header: null
   };
-  constructor(props) {
-    super(props);
-    this.state = {
-      userId: "",
-      userPass: ""
-    };
-  }
 
+  state = {
+    userId: "",
+    userPass: ""
+  };
+
+  /*
   calculate = () => {
     if (this.state.userId === "zain" && this.state.userPass === "123") {
-      this.props.navigation.navigate("ScreenThree");
+      this.props.navigation.navigate("Screen2");
+    } else {
+      alert("Incorrect Input And Password");
     }
   };
+  */
+
+  //Now i will Store Values and get Data from this AsyncStorage and login through this
+  calculate = async () => {
+    try {
+      const ID = await AsyncStorage.getItem("LoginId");
+      const Pass = await AsyncStorage.getItem("LoginPass");
+      if (ID === "zain" && Pass === "123") {
+        this.props.navigation.navigate("Screen2");
+      }
+    } catch (error) {
+      Alert.alert(error.message);
+    }
+  };
+
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
@@ -44,10 +63,7 @@ class Design extends Component {
 
         <View style={styles.block2}>
           <View style={styles.InsideBlock2}>
-            <Image
-              source={require("../../assets/images/logo.png")}
-              style={styles.Image}
-            />
+            <Image source={LogoImage.address} style={styles.Image} />
           </View>
 
           <View style={styles.insideBlock2ForInput}>
@@ -89,10 +105,7 @@ class Design extends Component {
               </Text>
             </TouchableOpacity>
           </View>
-          <Text
-            style={{ marginTop: 10, textAlign: "center" }}
-            onPress={() => alert("Jaa salya")}
-          >
+          <Text style={{ marginTop: 10, textAlign: "center" }}>
             Forgot Password ?
           </Text>
         </View>

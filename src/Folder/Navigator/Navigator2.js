@@ -35,6 +35,12 @@ class Navigator2 extends Component {
           title="backto screen3"
           onPress={() => this.props.navigation.navigate("Screen3")}
         />
+        <Button
+          title="Back to Login Screen"
+          onPress={() => {
+            this.props.navigation.navigate("Design");
+          }}
+        />
         <Image source={x} />
         <Image
           source={x}

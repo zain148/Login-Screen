@@ -1,14 +1,14 @@
 import React from "react";
-//import AppNavigator from "./Folder/AppNavigator";
+//import AppNavigator from "./src/Folder/AppNavigator";
 
 //for stack and tabs navigaton
-//import Navigation from "./src/Folder/Navigator/Screens";
+import Navigation from "./src/Folder/Navigator/Screens";
 
 //for only drawer Navigation
-import Drawer from "./src/Folder/Navigator/Drawer";
+//import Drawer from "./src/Folder/Navigator/Drawer";
 
 const App = () => {
-  return <Drawer />;
+  return <Navigation />;
   //run kar k check karo
 };
 

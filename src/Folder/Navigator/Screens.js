@@ -1,10 +1,11 @@
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createAppContainer } from "react-navigation";
+import Design from "../LoginScreen/design";
 import Navigation1 from "./Navigator1";
 import Navigation2 from "./Navigator2";
 import Navigator3 from "./Navigator3";
+
 import { createStackNavigator } from "react-navigation-stack";
-import { Ionicons } from "@expo/vector-icons";
 
 // use both Stack and tab navigator
 const ScreenBottomNavigator = createBottomTabNavigator(
@@ -40,6 +41,9 @@ const ScreenBottomNavigator = createBottomTabNavigator(
 
 const stack = createStackNavigator(
   {
+    Design: {
+      screen: Design
+    },
     Screen2: {
       screen: Navigation2
     },
@@ -51,7 +55,7 @@ const stack = createStackNavigator(
     }
   },
   {
-    initialRouteName: "Screen2"
+    initialRouteName: "Design"
   }
 );
 
