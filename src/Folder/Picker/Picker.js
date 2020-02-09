@@ -34,3 +34,29 @@ class Pickedcomponent extends Component {
 }
 
 export default Pickedcomponent;
+
+import React from "react";
+
+class ErrorB extends React.Component {
+  state = {
+    let: false,
+    errorMessage: ""
+  };
+
+  //this method will call when got some error
+  componentDidCatch(error) {
+    this.setState({
+      let: true,
+      errorMessage: error
+    });
+  }
+  render() {
+    if (this.state.let) {
+      return <h1>{this.state.errorMessage}</h1>;
+    } else {
+      return this.props.children;
+    }
+  }
+}
+
+export default ErrorB;
